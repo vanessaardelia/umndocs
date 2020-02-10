@@ -29,9 +29,10 @@ use Yii;
  * @property MDocument[] $idDocs2
  * @property MUserSignature $mUserSignature
  */
-class User extends \yii\db\ActiveRecord implements identity
+class User extends \yii\db\ActiveRecord
 {
-
+    public $username;
+    public $password;
     /**
      * {@inheritdoc}
      */
@@ -71,6 +72,15 @@ class User extends \yii\db\ActiveRecord implements identity
             'Departemen' => 'Departemen',
             'Nama' => 'Nama',
         ];
+    }
+
+    public function validateLogin($username, $password){
+        $query = "SELECT COUNT(*) FROM M_User WHERE EmailUser = '$username' AND Password = '$password'";
+        $boolCheck = Yii::$app->db->createCommand($query)->queryScalar();
+        if($boolCheck == 1){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -201,10 +211,5 @@ class User extends \yii\db\ActiveRecord implements identity
     public function getMUserSignature()
     {
         return $this->hasOne(MUserSignature::className(), ['IdUser' => 'IdUser']);
-    }
-
-    public function validatePassword($Password)
-    {
-        return $this->Password === $Password;
     }
 }

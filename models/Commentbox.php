@@ -13,7 +13,7 @@ use Yii;
  *
  * @property MAccesscommentbox[] $mAccesscommentboxes
  */
-class Commentbox extends \yii\db\ActiveRecord
+class CommentBox extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

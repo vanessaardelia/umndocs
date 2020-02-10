@@ -32,14 +32,14 @@
                     /* label => nama di web, icon atau mau langsung url => bentuk logo, etc*/
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/']],
-                    ['label' => 'View', 'icon' => 'eye', 'url' => ['/view']],
+                    ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/main/index']],
+                    // ['label' => 'View', 'icon' => 'eye', 'url' => ['/view']],
                     [
                         'label' => 'Document',
                         'icon' => 'book',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Create Document', 'icon' => 'edit', 'url' => ['/create-document'],],
+                            ['label' => 'View Documents', 'icon' => 'edit', 'url' => ['/main/document'],],
                             ['label' => 'Approved Document', 'icon' => 'check-circle', 'url' => ['/approved-document'],],
                             ['label' => 'Submitted Document', 'icon' => 'file-code-o', 'url' => ['/submitted-document'],],
                             ['label' => 'Waiting for Tags', 'icon' => 'tags', 'url' => ['/waitingfor-tags'],],

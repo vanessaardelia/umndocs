@@ -13,7 +13,7 @@ use Yii;
  * @property MDocument $idDoc
  * @property MGroup $idGroup
  */
-class Accessgroup extends \yii\db\ActiveRecord
+class AccessGroup extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

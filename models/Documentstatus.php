@@ -10,7 +10,7 @@ use Yii;
  * @property int $IdDocStatus
  * @property string $DocumentStatus
  */
-class Documentstatus extends \yii\db\ActiveRecord
+class DocumentStatus extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

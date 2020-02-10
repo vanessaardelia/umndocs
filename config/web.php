@@ -5,9 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'Document Management System',
     'basePath' => dirname(__DIR__),
-    /*untuk ganti nama web yg di header */
-    'name' => 'DOCS_UMN',
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',

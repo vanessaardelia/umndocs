@@ -5,10 +5,10 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'basePath' => dirname(__DIR__),
-    /*untuk ganti nama web yg di header */
-    'name' => 'DOCS_UMN',
+    'basePath' => dirname(__DIR__),     
     'bootstrap' => ['log'],
+    'defaultRoute' => 'login/index',
+    'name' => 'Document Management System',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -33,7 +33,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

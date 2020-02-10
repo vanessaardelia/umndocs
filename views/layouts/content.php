@@ -5,22 +5,6 @@ use dmstr\widgets\Alert;
 ?>
 <div class="content-wrapper">
     <section class="content-header">
-        <?php if (isset($this->blocks['content-header'])) { ?>
-            <h1><?= $this->blocks['content-header'] ?></h1>
-        <?php } else { ?>
-            <h1>
-                <?php
-                if ($this->title !== null) {
-                    echo \yii\helpers\Html::encode($this->title);
-                } else {
-                    echo \yii\helpers\Inflector::camel2words(
-                        \yii\helpers\Inflector::id2camel($this->context->module->id)
-                    );
-                    echo ($this->context->module->id !== \Yii::$app->id) ? '<small>Module</small>' : '';
-                } ?>
-            </h1>
-        <?php } ?>
-
         <?=
         Breadcrumbs::widget(
             [
@@ -35,37 +19,8 @@ use dmstr\widgets\Alert;
     </section>
 </div>
 
-<!-- footer -->
 <footer class="main-footer">
-    <div class="container">
-        <div class="col-3">
-            <b>Helpdesk</b>
-            <p>Biro Pengembangan Pembelajaran
-            Universitas Multimedia Nusantara
-            Lantai 3, Gedung B ruang B318
-            Jl. Scientia Boulevard, Gading Serpong 
-            Tangerang, Banten 15811</P>
-        </div>
-        <div class="col-3">
-            <b>Contact</b>
-            <p>Phone
-            (021) 5422 0808 ext.3518
-            Email
-            elearning@umn.ac.id
-            LineID
-            elearning-umn
-            Whatsapp(Message Only)
-            0857-0955-7603</p>
-        </div>
-        <div class="col-3">
-            <b>Version</b> 2.0
-        </div>
-        <div class="col-3">
-            <b>Version</b> 2.0
-        </div>
-        <!-- <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved. -->
-    </div>
+
 </footer>
 
 <!-- Control Sidebar -->

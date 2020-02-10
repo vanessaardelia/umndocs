@@ -35,6 +35,9 @@ use Yii;
  */
 class Document extends \yii\db\ActiveRecord
 {
+    public $namaDoc;
+    public $file;
+
     /**
      * {@inheritdoc}
      */
@@ -51,9 +54,10 @@ class Document extends \yii\db\ActiveRecord
         return [
             [['IdDoc', 'Parentid', 'DocumentStatus', 'JenisDoc', 'CreatedBy', 'Owner', 'NoDoc'], 'required'],
             [['IdDoc', 'Parentid', 'DocumentStatus'], 'integer'],
-            [['JenisDoc'], 'string', 'max' => 30],
+            [['JenisDoc', 'namaDoc'], 'string', 'max' => 30],
             [['CreatedBy', 'Owner'], 'string', 'max' => 11],
             [['NoDoc'], 'string', 'max' => 255],
+            [['file'], 'file', 'extensions' => 'doc, docx'],
             [['IdDoc'], 'unique'],
             [['Parentid'], 'exist', 'skipOnError' => true, 'targetClass' => Document::className(), 'targetAttribute' => ['Parentid' => 'IdDoc']],
         ];

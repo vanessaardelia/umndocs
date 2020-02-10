@@ -15,7 +15,7 @@ use Yii;
  * @property MDocument $idDoc
  * @property MUser $idUser
  */
-class Givennotes extends \yii\db\ActiveRecord
+class GivenNotes extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

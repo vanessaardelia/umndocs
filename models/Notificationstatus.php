@@ -12,7 +12,7 @@ use Yii;
  *
  * @property MNotification[] $mNotifications
  */
-class Notificationstatus extends \yii\db\ActiveRecord
+class NotificationStatus extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

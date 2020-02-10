@@ -13,7 +13,7 @@ use Yii;
  * @property MDocument $idDoc
  * @property MUser $idUser
  */
-class Requestaccess extends \yii\db\ActiveRecord
+class RequestAccess extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

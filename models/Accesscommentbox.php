@@ -14,7 +14,7 @@ use Yii;
  * @property MCommentbox $idComment
  * @property MDocument $idDoc
  */
-class Accesscommentbox extends \yii\db\ActiveRecord
+class AccessCommentBox extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

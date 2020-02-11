@@ -24,5 +24,12 @@ $this->title = 'Document Management';
                 </table>
             </div>
         </div>
+        <ul>
+        <?php
+                foreach($documents as $document){ ?>
+                <?= $document['NamaDoc'] ?>
+            </li>
+        <?php } ?>
+        </ul>
     </div>
 </div>

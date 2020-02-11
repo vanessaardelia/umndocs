@@ -3,6 +3,7 @@
 namespace app\controllers;
 use Yii; 
 use app\models\Document;
+use app\models\Revisi;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -70,6 +71,12 @@ class DocumentController extends \yii\web\Controller
         readfile($temp_file_word);
         // Hapus file word dari folder temporary server
         unlink($temp_file_word);
+    }
+
+
+    // untuk menampilkan semua document
+    public function showalldocument(){
+        return $this->redirect(['main/document']);
     }
 
 }

@@ -5,7 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'basePath' => dirname(__DIR__),     
+    'name' => 'Document Management System',
+    'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'defaultRoute' => 'login/index',
     'name' => 'Document Management System',

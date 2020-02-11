@@ -1,4 +1,5 @@
 <?php
+
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 
@@ -6,11 +7,11 @@ use dmstr\widgets\Alert;
 <div class="content-wrapper">
     <section class="content-header">
         <?=
-        Breadcrumbs::widget(
-            [
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]
-        ) ?>
+            Breadcrumbs::widget(
+                [
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]
+            ) ?>
     </section>
 
     <section class="content">
@@ -19,8 +20,36 @@ use dmstr\widgets\Alert;
     </section>
 </div>
 
-<footer class="main-footer">
 
+<!-- Footer -->
+<hr>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-12 mx-auto">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 text-center">
+                        <img class="img-responsive center" src="https://skkm.umn.ac.id/assets/QR/image/Logo Student Dev UMN.png" width="100px" alt=""> </div>
+                    <div class="col-lg-3 col-md-4 main-footer" id="wrapper">
+                        <p class="text-muted">&copy; Universitasssssssss Multimedia Nusantara 2020. All Rights Reserved.</p>
+                        <p class="text">Developed by: </br>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-md-6">
+                        <p class="text-muted">Gedung C 206 Ruang Student Development, Universitas Multimedia Nusantara.<br />
+                            Jl. Boulevard Gading Serpong, Tangerang, Banten, Indonesia<br />
+                            (T)+62 21 5422 0808; (F)+62 21 5422 0800<br />
+                            Email: student.development@umn.ac.id
+                        </p>
+                    </div>
+                    <!-- <div class="col-lg-2 col-md-2">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+              </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
 <!-- Control Sidebar -->
@@ -147,7 +176,7 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Report panel usage
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
@@ -159,7 +188,7 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Allow mail redirect
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
@@ -171,7 +200,7 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Expose author name in posts
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
@@ -185,7 +214,7 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Show me as online
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
                 </div>
                 <!-- /.form-group -->
@@ -193,7 +222,7 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Turn off notifications
-                        <input type="checkbox" class="pull-right"/>
+                        <input type="checkbox" class="pull-right" />
                     </label>
                 </div>
                 <!-- /.form-group -->

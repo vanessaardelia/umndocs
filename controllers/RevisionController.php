@@ -2,22 +2,21 @@
 
 namespace app\controllers;
 use Yii;
+use yii\web\Controller;
+use app\models\Document;
+use app\models\Revisi;
 
-class MainController extends \yii\web\Controller
+class RevisionController extends \yii\web\Controller
 {
+    // untuk menampilkan revision document (status = 6))
     public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
-    public function actionDocument()
     {
         $query = "SELECT M_Revisi.NamaDoc
                         FROM M_Revisi
                         JOIN M_Document ON M_Revisi.IdDoc = M_Document.IdDoc
-                        WHERE M_Document.DocumentStatus = '5'";
+                        WHERE M_Document.DocumentStatus = '6'";
         $documents = Yii::$app->db->createCommand($query);
         $result = $documents->query();
-        return $this->render('document', ['documents' => $result]);
+        return $this->render('index', ['documents' => $result]);
     }
 }

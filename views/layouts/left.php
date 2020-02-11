@@ -33,7 +33,7 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/main/index']],
-                    // ['label' => 'View', 'icon' => 'eye', 'url' => ['/view']],
+
                     [
                         'label' => 'Document',
                         'icon' => 'book',
@@ -44,6 +44,7 @@
                             ['label' => 'Submitted Document', 'icon' => 'file-code-o', 'url' => ['/submitted-document'],],
                             ['label' => 'Waiting for Tags', 'icon' => 'tags', 'url' => ['/waitingfor-tags'],],
                             ['label' => 'Upload Cover', 'icon' => 'upload', 'url' => ['/upload-cover'],],
+                            ['label' => 'Revision', 'icon' => 'upload', 'url' => ['/revision'],],
                             // ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
                             // [
                             //     'label' => 'Level One',

@@ -74,9 +74,8 @@ class DocumentController extends \yii\web\Controller
     }
 
 
-    // untuk menampilkan semua document
+    // untuk menampilkan view document (yg udh approved semua (status = 5))
     public function showalldocument(){
         return $this->redirect(['main/document']);
     }
-
 }

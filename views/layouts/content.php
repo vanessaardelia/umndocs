@@ -2,8 +2,15 @@
 
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
+use yii\helpers\Html;
 
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
 <div class="content-wrapper">
     <section class="content-header">
         <?=
@@ -18,40 +25,42 @@ use dmstr\widgets\Alert;
         <?= Alert::widget() ?>
         <?= $content ?>
     </section>
-</div>
 
-
-<!-- Footer -->
-<hr>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-md-12 mx-auto">
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 text-center">
-                        <img class="img-responsive center" src="https://skkm.umn.ac.id/assets/QR/image/Logo Student Dev UMN.png" width="100px" alt=""> </div>
-                    <div class="col-lg-3 col-md-4 main-footer" id="wrapper">
-                        <p class="text-muted">&copy; Universitasssssssss Multimedia Nusantara 2020. All Rights Reserved.</p>
-                        <p class="text">Developed by: </br>
-
-                        </p>
+    <section class="footer">
+        <!-- Footer -->
+        <footer class="page-footer bg-blue" >
+            <div class="container">
+                <div class="row py-lg-4 px-lg-4 justify-content-center justify-content-md-around align-content-end" style="margin-top: 10px;">
+                    <div class="col-12 col-md-2 text-left my-2 my-md-0">
+                        <img class="img-responsive center img-fluid" src= <?= Yii::$app->request->baseUrl . "/assets/Images/logo-umn.jpg"?> width=50px;>
                     </div>
-                    <div class="col-lg-5 col-md-6">
-                        <p class="text-muted">Gedung C 206 Ruang Student Development, Universitas Multimedia Nusantara.<br />
-                            Jl. Boulevard Gading Serpong, Tangerang, Banten, Indonesia<br />
-                            (T)+62 21 5422 0808; (F)+62 21 5422 0800<br />
-                            Email: student.development@umn.ac.id
-                        </p>
+                    <div class="container col-12 col-md-8">
+                        <div class="row justify-content-center justify-content-md-around">
+                            <div class="col-10 col-md-5 my-2 my-md-0">
+                                <p class="text mb-1">Biro Penjaminan Mutu Internal B315</p>
+                                <p class="text mb-1">Universitas Multimedia Nusantara</p>
+                                <p class="text mb-1">Jl. Boulevard Gading Serpong</p>
+                                <p class="text mb-1">Tangerang, Banten-15811 Indonesia</p>
+                            </div>
+                            <div class="col-10 col-md-4 mt-2 mt-md-0">
+                                <p class="text mb-1">Contact Us</p>
+                                <p class="text mb-1"><i class="fa fa-envelope"></i> bpmi@gmail.com</p>
+                                <small class="mb-1 blue d-none d-md-flex text-muted">Developed by : Developed by : Christianto, Kenny C, Vanessa A, Ventryshia A
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center" style="padding-top: 10px;">
+                            <div class="col-2 text-center" id="wrapper">
+                                <p class="col-12">&copy; Universitas Multimedia Nusantara 2020. All Rights Reserved.</p>
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="col-lg-2 col-md-2">
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#contactModal">Contact Us</button>
-              </div> -->
                 </div>
             </div>
-        </div>
-    </div>
-</footer>
+        </footer>
+    </section>
 
+</div>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -241,4 +250,7 @@ use dmstr\widgets\Alert;
 </aside><!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
+
 <div class='control-sidebar-bg'></div>
+
+

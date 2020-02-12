@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use fedemotta\datatables\DataTables;
 /* @var $this yii\web\View */
 
 $this->title = 'Document Management';

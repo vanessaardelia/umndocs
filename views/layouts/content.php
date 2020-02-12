@@ -7,9 +7,7 @@ use yii\helpers\Html;
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -77,10 +75,8 @@ use yii\helpers\Html;
                 <li>
                     <a href='javascript::;'>
                         <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
                         <div class="menu-info">
                             <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
                             <p>Will be 23 on April 24th</p>
                         </div>
                     </a>

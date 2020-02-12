@@ -21,57 +21,27 @@ $this->title = 'Document Management System UMN';
 
     <div class="body-content">
     	<div class="row">
+            <?php
+            foreach($documents as $document): ?>
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-header card-chart" data-background-color="green">
 						<div class="ct-chart" id="dailySalesChart"></div>
 					</div>
 					<div class="card-content">
-						<h4 class="title">Daily Sales</h4>
-						<p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p>
+						<h4 class="title text-bold"><?= $document['NamaDoc'] ?>
+                        </h4>
 					</div>
 					<div class="card-footer">
 						<div class="stats">
-							<i class="material-icons">access_time</i> updated 4 minutes ago
+                            <p class="category"><span class="text-success"><i class="fa fa-pencil"></i> Created By: </span><?= $document['createdBy'] ?></p>
 						</div>
-					</div>
+                    </div>
 				</div>
 			</div>
 
-			<div class="col-md-4">
-				<div class="card">
-					<div class="card-header card-chart" data-background-color="orange">
-						<div class="ct-chart" id="emailsSubscriptionChart"></div>
-					</div>
-					<div class="card-content">
-						<h4 class="title">Email Subscriptions</h4>
-						<p class="category">Last Campaign Performance</p>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">access_time</i> campaign sent 2 days ago
-						</div>
-					</div>
+            <?php endforeach; ?>
 
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="card">
-					<div class="card-header card-chart" data-background-color="red">
-						<div class="ct-chart" id="completedTasksChart"></div>
-					</div>
-					<div class="card-content">
-						<h4 class="title">Completed Tasks</h4>
-						<p class="category">Last Campaign Performance</p>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">access_time</i> campaign sent 2 days ago
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
     </div>
 </div>

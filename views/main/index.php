@@ -18,7 +18,8 @@ $this->title = 'Document Management System UMN';
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div> -->
-
+    
+    <?php echo $emailUser ?>
     <div class="body-content">
     	<div class="row">
             <?php
@@ -41,23 +42,7 @@ $this->title = 'Document Management System UMN';
 			</div>
 
             <?php endforeach; ?>
-
 		</div>
     </div>
 </div>
 
-<!-- <div class="site-index">
-    <div class="body-content container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <?= Html::a('Document', ['main/document']) ?>
-            </div>
-            <div class="col-lg-4">
-
-            </div>
-            <div class="col-lg-4">
-
-            </div>
-        </div>
-    </div>
-</div> -->

@@ -14,9 +14,13 @@ class LoginController extends \yii\web\Controller
 
         $model = new User();
         if ($model->load(Yii::$app->request->post()) && $model->validateLogin($model->EmailUser, $model->Password)) {
+            $cookie = new yii\web\Cookie([
+                'name'=>'emailUser',
+                'value'=>$model->EmailUser
+            ]);
+            Yii::$app->getResponse()->getCookies()->add($cookie);
             return $this->redirect(['main/index']);
         }
-
         return $this->render('index', ['model' => $model]);
     }
 }

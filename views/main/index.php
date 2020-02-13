@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 /* @var $this yii\web\View */
 
@@ -18,31 +19,30 @@ $this->title = 'Document Management System UMN';
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div> -->
-
     <div class="body-content">
-    	<div class="row">
+        <div class="row">
             <?php
-            foreach($documents as $document): ?>
-			<div class="col-md-4">
-				<div class="card">
-					<div class="card-header card-chart" data-background-color="green">
-						<div class="ct-chart" id="dailySalesChart"></div>
-					</div>
-					<div class="card-content">
-						<h4 class="title text-bold"><?= $document['NamaDoc'] ?>
-                        </h4>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-                            <p class="category"><span class="text-success"><i class="fa fa-pencil"></i> Created By: </span><?= $document['createdBy'] ?></p>
-						</div>
+            foreach ($documents as $document) : ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header card-chart" data-background-color="green">
+                            <div class="ct-chart" id="dailySalesChart"></div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title text-bold"><?= $document['NamaDoc'] ?>
+                            </h4>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <p class="category"><span class="text-success"><i class="fa fa-pencil"></i> Created By: </span><?= $document['createdBy'] ?></p>
+                            </div>
+                        </div>
                     </div>
-				</div>
-			</div>
+                </div>
 
             <?php endforeach; ?>
 
-		</div>
+        </div>
     </div>
 </div>
 

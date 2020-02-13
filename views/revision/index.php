@@ -1,31 +1,40 @@
 <?php
+
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+// use yii\bootstrap\ActiveForm;
+
 /* @var $this yii\web\View */
 
 $this->title = 'Document Management';
 ?>
 
-<div class="site-index">
-    <div class="body-content container-fluid">
-        <?php
-                foreach($documents as $document){ ?>
-                <div class="body-content">
-    	    <div class="row">
-			    <div class="col-md-3">
-				    <div class="card">
-					    <div class="card-header card-chart" data-background-color="green">
-						    <div class="ct-chart" id="dailySalesChart"></div>
-					    </div>
-					    <div class="card-content">
-						    <h4 class="title"><?= $document['NamaDoc'] ?></h4>
-						    <!-- <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p> -->
-					    </div>
-					    <div class="card-footer">
-                        <?= Html::a('<button class="btn btn-primary"> Revision </button>', ['revision/create-form']) ?>
-					    </div>
-				    </div>
-			    </div>
-        <?php } ?>
-        </ul>
-    </div>
+<div class="container-fluid">
+	<?php
+	foreach ($comments as $comment) { ?>
+		<div class="col-md-8">
+			<div class="box box-solid box-primary">
+				<div class="box-header user-block">
+					<span class="pull-left"><i class="fa fa-user-circle-o"></i> <?= $comment['Nama'] ?> </span>
+					<span class="pull-right"><i class="fa fa-clock-o"></i> <?= $comment['TimeChat'] ?> </span>
+				</div>
+				<div class="box-body">
+					<?= $comment['Comments'] ?>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+
+
+
+
+</div>
+<div class="container-fluid">
+	<div class="col-md-8">
+		<?php $form = ActiveForm::begin(['id' => 'comment-form']); ?>
+		<?= $form->field($model, 'Comments')->textInput()->input('', ['placeholder' => 'Write a comment...']) ?>
+
+		<?= Html::submitButton('Submit', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'comment-button']) ?>
+		<?php ActiveForm::end(); ?>
+	</div>
 </div>

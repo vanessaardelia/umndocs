@@ -10,8 +10,9 @@ use fedemotta\datatables\DataTables;
 $this->title = 'Revision Document';
 
 $dataProvider = new ActiveDataProvider([
-//    'query' => $query,
-//        'query' => $documents->asArray(),
+//    $searchModel = new NewsSearch(),
+//    $dataProvider = $searchModel->search(Yii::$app->request->queryParams),
+
     'query' => Document::find() ->select(['JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc'])
                                 ->from('M_Document')
                                 ->join('join', 'M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc'),
@@ -32,6 +33,9 @@ $dataProvider = new ActiveDataProvider([
 ////            'filterModel' => $searchModel,
             'columns' => [
                 [
+                    'class' => 'yii\grid\SerialColumn',
+                ],
+                [
                     'attribute' => 'namaDoc',
                     'label' => 'Nama Document',
                 ],
@@ -39,29 +43,13 @@ $dataProvider = new ActiveDataProvider([
                     'attribute' => 'JenisDoc',
                     'label' => 'Type Document'
                 ],
+                "CreatedBy",
                 [
-                    'attribute' => 'CreatedBy',
-                    'label' => 'Created By'
-                ],
-                [
-                    'attribute' => 'DocumentStatus',
-                    'label' => 'Document Status',
-                    'value' => function($documents){
-                        if($documents->DocumentStatus == 5){
-                            return 'Approved';
-                        }elseif ($documents->DocumentStatus == 4){
-                            return 'Waiting for Cover';
-                        }elseif ($documents->DocumentStatus == 3){
-                            return 'Waiting for Tags';
-                        }elseif ($documents->DocumentStatus == 2){
-                            return 'Submitted Document';
-                        }elseif ($documents->DocumentStatus == 1){
-                            return 'Draft';
-                        }
-                    }
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '<button class="btn btn-success"> See Detail </button>'
                 ],
             ]
-        ])?>
+        ]) ?>
 
     </div>
 </div>

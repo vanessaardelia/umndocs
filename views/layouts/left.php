@@ -33,14 +33,14 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/main/index']],
-
                     [
                         'label' => 'Document',
                         'icon' => 'book',
                         'url' => '#',
                         'items' => [
                             ['label' => 'View Documents', 'icon' => 'edit', 'url' => ['/main/document'],],
-                            ['label' => 'Approved Document', 'icon' => 'check-circle', 'url' => ['/approved-document'],],
+                            ['label' => 'Draft', 'icon' => 'upload', 'url' => ['document/draf'],],
+                            ['label' => 'Approved Document', 'icon' => 'check-circle', 'url' => ['document/approved'],],
                             ['label' => 'Submitted Document', 'icon' => 'file-code-o', 'url' => ['/submitted-document'],],
                             ['label' => 'Waiting for Tags', 'icon' => 'tags', 'url' => ['/waitingfor-tags'],],
                             ['label' => 'Upload Cover', 'icon' => 'upload', 'url' => ['/upload-cover'],],

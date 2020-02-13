@@ -7,9 +7,7 @@ use yii\helpers\Html;
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -28,11 +26,11 @@ use yii\helpers\Html;
 
     <section class="footer">
         <!-- Footer -->
-        <footer class="page-footer bg-blue" >
+        <footer class="page-footer bg-blue">
             <div class="container">
                 <div class="row py-lg-4 px-lg-4 justify-content-center justify-content-md-around align-content-end" style="margin-top: 10px;">
                     <div class="col-12 col-md-2 text-left my-2 my-md-0">
-                        <img class="img-responsive center img-fluid" src= <?= Yii::$app->request->baseUrl . "/assets/Images/logo-umn.jpg"?> width=50px;>
+                        <img class="img-responsive center img-fluid" src=<?= Yii::$app->request->baseUrl . "/assets/Images/logo-umn.jpg" ?> width=50px;>
                     </div>
                     <div class="container col-12 col-md-8">
                         <div class="row justify-content-center justify-content-md-around">
@@ -77,10 +75,8 @@ use yii\helpers\Html;
                 <li>
                     <a href='javascript::;'>
                         <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
                         <div class="menu-info">
                             <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
                             <p>Will be 23 on April 24th</p>
                         </div>
                     </a>
@@ -252,5 +248,3 @@ use yii\helpers\Html;
      immediately after the control sidebar -->
 
 <div class='control-sidebar-bg'></div>
-
-

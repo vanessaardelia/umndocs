@@ -30,7 +30,7 @@ $this->title = 'Document Management';
     	<div class="row">
 			<div class="col-md-3">
 				<div class="card">
-					<div class="card-header card-chart" data-background-color="green">
+					<div class="card2 card-header card-chart" data-background-color="black">
 						<div class="ct-chart" id="dailySalesChart"></div>
 					</div>
 					<div class="card-content">
@@ -48,3 +48,8 @@ $this->title = 'Document Management';
         </ul>
     </div>
 </div>
+
+
+
+
+

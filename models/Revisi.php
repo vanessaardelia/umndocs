@@ -36,7 +36,7 @@ class Revisi extends \yii\db\ActiveRecord
             [['NoRev', 'IdDoc', 'RevisionStatus'], 'integer'],
             [['NamaDoc', 'LinkDoc', 'LinkCover'], 'string', 'max' => 100],
             [['NoRev', 'IdDoc'], 'unique', 'targetAttribute' => ['NoRev', 'IdDoc']],
-            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => MDocument::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
+            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => Document::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
         ];
     }
 

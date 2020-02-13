@@ -22,7 +22,6 @@ class LoginController extends \yii\web\Controller
             Yii::$app->getResponse()->getCookies()->add($cookie);
             return $this->redirect(['main/index']);
         }
-
         return $this->render('index', ['model' => $model]);
     }
 }

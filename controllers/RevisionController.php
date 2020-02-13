@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use App\Post;
 use Yii;
 use yii\web\Cookie;
 use yii\web\Controller;

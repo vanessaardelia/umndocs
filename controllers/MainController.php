@@ -12,7 +12,7 @@ class MainController extends \yii\web\Controller
                         JOIN M_Document ON M_Revisi.IdDoc = M_Document.IdDoc";
         $documents = Yii::$app->db->createCommand($query);
         $emailUser = Yii::$app->getRequest()->getCookies()->getValue('emailUser');
-        $result = $documents->query();
+        $result = $documents->queryAll();
 
         return $this->render('index', ['documents' => $result, 'emailUser' => $emailUser],);
     }

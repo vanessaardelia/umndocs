@@ -22,6 +22,7 @@ $this->title = 'Document Management';
 						        <!-- <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p> -->
 					        </div>
 					        <div class="card-footer">
+							<!-- <?= Html::a('<button class="btn btn-primary"> View Draf </button>', ['document/givennotes', 'IdDoc' => $document['IdDoc']], ['class' => 'btn btn-primary']) ?> -->
                             <?= Html::a('View Draf', ['document/givennotes', 'IdDoc' => $document['IdDoc']], ['class' => 'btn btn-primary']) ?>
 					        </div>
 				        </div>

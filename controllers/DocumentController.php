@@ -140,6 +140,7 @@ class DocumentController extends \yii\web\Controller
                     //     'Content' => aaa,
                     // ])->execute();
                     // return $this->redirect('givennotes');
+                    
                     $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
                     $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
                     $query = "INSERT INTO M_Givennotes (IdNotes, IdDoc, IdUser, Content)

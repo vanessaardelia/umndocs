@@ -28,11 +28,11 @@ use yii\helpers\Html;
 
     <section class="footer">
         <!-- Footer -->
-        <footer class="page-footer bg-blue" >
+        <footer class="page-footer bg-blue">
             <div class="container">
                 <div class="row py-lg-4 px-lg-4 justify-content-center justify-content-md-around align-content-end" style="margin-top: 10px;">
                     <div class="col-12 col-md-2 text-left my-2 my-md-0">
-                        <img class="img-responsive center img-fluid" src= <?= Yii::$app->request->baseUrl . "/assets/Images/logo-umn.jpg"?> width=50px;>
+                        <img class="img-responsive center img-fluid" src=<?= Yii::$app->request->baseUrl . "/assets/Images/logo-umn.jpg" ?> width=50px;>
                     </div>
                     <div class="container col-12 col-md-8">
                         <div class="row justify-content-center justify-content-md-around">
@@ -252,5 +252,3 @@ use yii\helpers\Html;
      immediately after the control sidebar -->
 
 <div class='control-sidebar-bg'></div>
-
-

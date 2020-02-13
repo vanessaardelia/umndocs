@@ -36,8 +36,8 @@ class GivenNotes extends \yii\db\ActiveRecord
             [['IdUser'], 'string', 'max' => 11],
             [['Content'], 'string', 'max' => 255],
             [['IdNotes', 'IdDoc', 'IdUser'], 'unique', 'targetAttribute' => ['IdNotes', 'IdDoc', 'IdUser']],
-            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => MDocument::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
-            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => MUser::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
+            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => Document::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
+            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
         ];
     }
 

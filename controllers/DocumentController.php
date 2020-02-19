@@ -140,7 +140,6 @@ class DocumentController extends \yii\web\Controller
             $iduserresult = $iduserr->queryScalar();
 
         $queryIdNote = "SELECT MAX(IdNotes) FROM M_Givennotes";
-
         $IdNote = Yii::$app->db->createCommand($queryIdNote)->queryScalar();
         $IdNotes = ($IdNote + 1);
 

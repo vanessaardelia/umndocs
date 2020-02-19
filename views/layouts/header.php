@@ -2,6 +2,9 @@
 
 use Codeception\PHPUnit\ResultPrinter\HTML as ResultPrinterHTML;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\models\UserSignature;
+use yii\web\UploadFile;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -33,6 +36,12 @@ use yii\helpers\Html;
                 $result = $notifications->query();
             }else{
                 
+            }
+
+            $model = new UserSignature();
+            if ($model->load(Yii::$app->request->post())){
+                $model->signature = UploadedFile::getInstance($model, 'signature');
+                $signature_path = $model->IdUser.rand(1,4000).'.'.$model->signature->getExtension;
             }
 ?>
 
@@ -94,9 +103,7 @@ use yii\helpers\Html;
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-                                    <?php foreach($result as $notif){ ?>
-                                        <i class="fa fa-users text-aqua"></i>  <?= $notif['ContentNotif'] ?>
-                                        <?php } ?>
+                                    
                                     </a>
                                 </li>
                             </ul>
@@ -143,7 +150,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                        <span class="hidden-xs"><?= $namaUser ?> </span>
+                        <span class="hidden-xs"> </span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -151,7 +158,7 @@ use yii\helpers\Html;
                             <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 
                             <p>
-                                <?= $namaUser ?>
+                                
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>

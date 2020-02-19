@@ -139,9 +139,14 @@ class DocumentController extends \yii\web\Controller
             $iduserr = Yii::$app->db->createCommand($query);
             $iduserresult = $iduserr->queryScalar();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validateNotes('10')) {
+        $queryIdNote = "SELECT MAX(IdNotes) FROM M_Givennotes";
+
+        $IdNote = Yii::$app->db->createCommand($queryIdNote)->queryScalar();
+        $IdNotes = ($IdNote + 1);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validateNotes($IdNotes)) {
             $query = "INSERT INTO M_Givennotes (IdNotes, IdDoc, IdUser, Content)
-                      VALUES ('10', $IdDoc, '$iduserresult', '$model->Content')";
+                      VALUES ($IdNotes, $IdDoc, '$iduserresult', '$model->Content')";
             $notes = Yii::$app->db->createCommand($query);
             $result = $notes->query();
         }

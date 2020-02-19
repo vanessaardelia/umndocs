@@ -30,9 +30,10 @@ class UserSignature extends \yii\db\ActiveRecord
         return [
             [['IdUser', 'Signature'], 'required'],
             [['IdUser'], 'string', 'max' => 11],
-            [['Signature'], 'string', 'max' => 150],
+            // [['Signature'], 'string', 'max' => 150],
+            [['Signature'], 'file', 'extensions' => 'jpg, png'],
             [['IdUser'], 'unique'],
-            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => MUser::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
+            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
         ];
     }
 

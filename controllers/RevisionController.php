@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\GridViewSearch;
 use App\Post;
 use Yii;
 use yii\web\Cookie;
@@ -12,9 +13,16 @@ use app\models\Commentbox;
 
 class RevisionController extends \yii\web\Controller
 {
-    // untuk menampilkan revision document (status = 6))
-    public function actionIndex()
-    {
+    public function actionIndex(){
+        $query = "SELECT M_Document.*, M_Revisi.NamaDoc as namaDoc
+                        FROM M_Document
+                        JOIN M_Revisi ON M_Document.IdDoc = M_Revisi.IdDoc";
+        $documents = Yii::$app->db->createCommand($query);
+        $result = $documents->query();
+
+        $searchModel = new GridViewSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
         if (($cookie = Yii::$app->request->cookies->get('emailUser')) !== null) {
             $emailUser = $cookie->value;
         } else return $this->redirect('login/index');
@@ -34,7 +42,7 @@ class RevisionController extends \yii\web\Controller
             VALUES ($IdComments, '$model->Comments', 1, 2, '$idUser', now())"; //BLM DIGANTI
             Yii::$app->db->createCommand($query)->query();
         }
-
+        
         $model = new Commentbox();
         $query = "SELECT M_Commentbox.IdComment, M_Commentbox.Comments, M_Commentbox.IdDoc, 
                             M_Commentbox.NoRev, M_Commentbox.TimeChat, M_User.Nama
@@ -45,6 +53,14 @@ class RevisionController extends \yii\web\Controller
                         WHERE M_Commentbox.IdUser = '$idUser'";  //BLM DIGANTI PAKE COOKIE
         $comments = Yii::$app->db->createCommand($query)->query();
 
-        return $this->render('index', ['model' => $model, 'comments' => $comments]);
+
+        return $this->render('index', [
+            'documents' => $result,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'comments' => $comments
+        ]);
+//        return $this->render('index', ['model' => $model, 'comments' => $comments]);
     }
 }

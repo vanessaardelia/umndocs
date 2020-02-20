@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Document;
+use app\models\GridViewSearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -9,18 +10,6 @@ use fedemotta\datatables\DataTables;
 
 $this->title = 'Revision Document';
 
-$dataProvider = new ActiveDataProvider([
-//    $searchModel = new NewsSearch(),
-//    $dataProvider = $searchModel->search(Yii::$app->request->queryParams),
-
-    'query' => Document::find() ->select(['JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc'])
-                                ->from('M_Document')
-                                ->join('join', 'M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc'),
-
-    'pagination' => [
-        'pageSize' => 10,
-    ]
-])
 ?>
 
 <div class="site-index">
@@ -30,7 +19,8 @@ $dataProvider = new ActiveDataProvider([
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
-////            'filterModel' => $searchModel,
+            'filterModel' => $searchModel,
+//            'showFooter' => true,
             'columns' => [
                 [
                     'class' => 'yii\grid\SerialColumn',
@@ -41,14 +31,24 @@ $dataProvider = new ActiveDataProvider([
                 ],
                 [
                     'attribute' => 'JenisDoc',
-                    'label' => 'Type Document'
+                    'label' => 'Type Document',
+                    'filter' => ['Kebijakan Mutu' => 'Kebijakan Mutu', 'Kebijakan K3L' => 'Kebijakan K3L',
+                        'Manual Mutu' => 'Manual Mutu', 'Manual K3L' => 'Manual K3L',
+                        'Standard Mutu' => 'Standard Mutu', 'Standard K3L' => 'Standard K3L',
+                        'Prosedur Mutu' => 'Prosedur Mutu', 'Prosedur K3L' => 'Prosedur K3L',
+                        'SOP Mutu' => 'SOP Mutu', 'SOP K3L' => 'SOP K3L',
+                        'Formulir' => 'Formulir', 'Userguide Mutu' => 'Userguide Mutu',
+                        'K3L' => 'K3L', 'Dokumen kegiatan umum' => 'Dokumen kegiatan umum']
                 ],
                 "CreatedBy",
                 [
                     'class' => 'yii\grid\ActionColumn',
+                    'header' => 'Action',
+                    'headerOptions' => ['width' => '80'],
                     'template' => '<button class="btn btn-success"> See Detail </button>'
                 ],
-            ]
+            ],
+//            'layout' => "\n{summary}\n{items}\n{pager}"
         ]) ?>
 
     </div>

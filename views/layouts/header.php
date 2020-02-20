@@ -15,20 +15,20 @@ use yii\web\UploadFile;
 //         'query' => Document::find() ->select(['JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc'])
 //                                     ->from('M_Document')
 //                                     ->join('join', 'M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc'),
-    
+
 //         'pagination' => [
 //             'pageSize' => 10,
 //         ]
 //     ])
 
-    $cookies = Yii::$app->request->cookies;
-            if (($cookie = $cookies->get('emailUser')) !== null) {
-                $emailUser = $cookie->value;
-                $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-                $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
-                $namaUserquery = "SELECT M_User.Nama FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-                $namaUser = Yii::$app->db->createCommand($namaUserquery)->queryScalar();
-                $query = "SELECT *
+$cookies = Yii::$app->request->cookies;
+if (($cookie = $cookies->get('emailUser')) !== null) {
+    $emailUser = $cookie->value;
+    $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
+    $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
+    $namaUserquery = "SELECT M_User.Nama FROM M_User WHERE M_User.EmailUser = '$emailUser'";
+    $namaUser = Yii::$app->db->createCommand($namaUserquery)->queryScalar();
+    $query = "SELECT *
                                 FROM M_Notification
                                 JOIN M_NotificationStatus ON M_Notification.IdContentNotif = M_NotificationStatus.IdContentNotif
                                 WHERE M_Notification.IdUser = '$IdUser'";
@@ -43,6 +43,9 @@ use yii\web\UploadFile;
                 $model->signature = UploadedFile::getInstance($model, 'signature');
                 $signature_path = $model->IdUser.rand(1,4000).'.'.$model->signature->getExtension;
             }
+    $notifications = Yii::$app->db->createCommand($query);
+    $result = $notifications->query();
+
 ?>
 
 <header class="main-header">
@@ -70,11 +73,11 @@ use yii\web\UploadFile;
                     <ul class="dropdown-menu">
                         <li class="header">You have 4 messages</li>
                         <li> -->
-                            <!-- inner menu: contains the actual data -->
-                            <!-- <ul class="menu">
+                <!-- inner menu: contains the actual data -->
+                <!-- <ul class="menu">
                                 <li> -->
-                                    <!-- start message -->
-                                    <!-- <a href="#">
+                <!-- start message -->
+                <!-- <a href="#">
                                         <div class="pull-left">
                                             <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                                         </div>
@@ -85,8 +88,8 @@ use yii\web\UploadFile;
                                         <p>Why not buy a new awesome theme?</p>
                                     </a>
                                 </li> -->
-                                <!-- end message -->
-                            <!-- </ul>
+                <!-- end message -->
+                <!-- </ul>
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
@@ -104,13 +107,16 @@ use yii\web\UploadFile;
                                 <li>
                                     <a href="#">
                                     
+                                        <?php foreach ($result as $notif) { ?>
+                                            <i class="fa fa-users text-aqua"></i> <?= $notif['ContentNotif'] ?>
+                                        <?php } ?>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="footer"><a href="#">View all</a></li>
                     </ul>
-                    
+
                 </li>
                 <!-- Tasks: style can be found in dropdown.less -->
                 <li class="dropdown tasks-menu">

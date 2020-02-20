@@ -25,8 +25,8 @@ $this->title = 'Document Management';
             </div>
         </div>
         <?php
-                foreach($documents as $document){ ?>
-                <div class="body-content">
+            foreach($documents as $document){ ?>
+            <div class="body-content">
     	<div class="row">
 			<div class="col-md-3">
 				<div class="card">

@@ -12,12 +12,23 @@ $this->title = 'Approved Document';
 
 <div class="body-content">
 
-<?php echo $emailUser ?>
 <p>Given Notes </p>
-<p> Notes: </p>
-<?php foreach($givennotes as $note){ ?>
-<?= $note['Content'] ?>
-<?php } ?>
+
+<div class="container-fluid">
+	<?php
+	foreach($givennotes as $note){ ?>
+		<div class="col-md-8">
+			<div class="box box-solid box-primary">
+				<div class="box-header user-block">
+					<span class="pull-left"><i class="fa fa-user-circle-o"></i> <?php echo $emailUser ?> </span>
+					<!-- <span class="pull-right"><i class="fa fa-clock-o"></i> </span> -->
+				</div>
+				<div class="box-body">
+          <?= $note['Content'] ?>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
 
 <?php $form = ActiveForm::begin([
   'method' => 'post',

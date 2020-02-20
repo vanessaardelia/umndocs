@@ -31,7 +31,6 @@ $this->title = 'Document Management';
             <?php else: ?>
             <p> Tidak ada data </p>
             <?php endif; ?>
-
     </div>
 </div>
 

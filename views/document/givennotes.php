@@ -14,6 +14,11 @@ $this->title = 'Approved Document';
 
 <?php echo $emailUser ?>
 <p>Given Notes </p>
+<p> Notes: </p>
+<?php foreach($givennotes as $note){ ?>
+<?= $note['Content'] ?>
+<?php } ?>
+
 <?php $form = ActiveForm::begin([
   'method' => 'post',
 ]);

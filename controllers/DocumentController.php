@@ -128,29 +128,37 @@ class DocumentController extends \yii\web\Controller
 
     //udah bs masuk database tp idnotes blm di increment jd msh error, tp udh msk database
     public function actionGivennotes($IdDoc){
-        $notes = new givennotes();
-        $cookies = Yii::$app->request->cookies;
-            if (($cookie = $cookies->get('emailUser')) !== null) {
-                $emailUser = $cookie->value;
-                if($notes->load(Yii::$app->request->post())){
-                    // $conection->createCommand()->insert('givennotes', [
-                    //     'IdNotes' => 1,
-                    //     'IdDoc' => $IdDoc,
-                    //     'IdUser' => $emailUser,
-                    //     'Content' => aaa,
-                    // ])->execute();
-                    // return $this->redirect('givennotes');
-                    
-                    $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-                    $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
-                    $query = "INSERT INTO M_Givennotes (IdNotes, IdDoc, IdUser, Content)
-                            VALUES ('2', $IdDoc, '$IdUser', '$notes->Content')";
-                    $documents = Yii::$app->db->createCommand($query);
-                    $result = $documents->query();   
-                    return $this->render('draf', ['documents' => $result]);
-            } else {
-                return $this->render('givennotes', ['notes' => $notes, 'emailUser' => $emailUser]);
-            }
+        $model = new Givennotes();
+        if (($cookie = Yii::$app->request->cookies->get('emailUser')) !== null) {
+            $emailUser = $cookie->value;
+        } else return $this->redirect('login/index');
+
+        $query = "SELECT M_User.IdUser
+                        FROM M_User
+                        WHERE M_User.EmailUser = '$emailUser'";
+            $iduserr = Yii::$app->db->createCommand($query);
+            $iduserresult = $iduserr->queryScalar();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validateNotes('10')) {
+            $query = "INSERT INTO M_Givennotes (IdNotes, IdDoc, IdUser, Content)
+                      VALUES ('10', $IdDoc, '$iduserresult', '$model->Content')";
+            $notes = Yii::$app->db->createCommand($query);
+            $result = $notes->query();
         }
+        
+        //biar dia baru lg
+        $model = new Givennotes();
+        $query = "SELECT *
+                        FROM M_givennotes
+                        JOIN M_Document ON M_givennotes.IdDoc = M_Document.IdDoc
+                        JOIN M_Revisi ON M_Document.IdDoc = M_Revisi.IdDoc
+                        JOIN M_User ON M_givennotes.IdUser = M_User.IdUser
+                        WHERE M_givennotes.IdUser = '$iduserresult' AND M_givennotes.IdDoc = $IdDoc";  //BLM DIGANTI PAKE COOKIE
+        $notesresult = Yii::$app->db->createCommand($query);
+        $result = $notesresult->query();
+
+        return $this->render('givennotes', ['notes' => $model, 'emailUser' => $emailUser, 'givennotes' => $result]);
+
+        // return $this->render('givennotes', ['notes' => $model, 'emailUser' => $emailUser]);
     }
 }

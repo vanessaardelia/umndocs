@@ -89,32 +89,34 @@ $this->title = 'Dashboard';
                 <?php
                 $x = 0;
                 foreach ($documents as $document) :
-                if ($x % 3 == 0)
-                    $class = 'indianred';
-                else if ($x % 3 == 1)
-                    $class = 'palegreen';
-                else
-                    $class = 'skyblue';
+                    if ($x % 3 == 0)
+                        $class = 'indianred';
+                    else if ($x % 3 == 1)
+                        $class = 'palegreen';
+                    else
+                        $class = 'skyblue';
 
-                if($x<10){
+                    if ($x < 10) {
                 ?>
-                <div class="col-md-4">
-                    <div class="card card-project my-2 my-md-0">
-                        <div class="card-header card-chart" style="background-color: <?= $class ?>">
-                            <div class="ct-chart" id="dailySalesChart"></div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="title text-bold"><?= $document['NamaDoc'] ?>
-                            </h4>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <p class="category"><span class="text-success"><i class="fa fa-pencil"></i> Created By: </span><?= $document['createdBy'] ?></p>
+                        <div class="col-md-4">
+                            <div class="card card-project my-2 my-md-0">
+                                <div class="card-header card-chart" style="background-color: <?= $class ?>">
+                                    <div class="ct-chart" id="dailySalesChart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title text-bold"><?= $document['NamaDoc'] ?>
+                                    </h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <p class="category"><span class="text-success"><i class="fa fa-pencil"></i> Created By: </span><?= $document['createdBy'] ?></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php } $x++; endforeach; ?>
+                <?php }
+                    $x++;
+                endforeach; ?>
             </div>
         </div>
     </div>

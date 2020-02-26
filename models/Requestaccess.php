@@ -49,6 +49,24 @@ class RequestAccess extends \yii\db\ActiveRecord
         ];
     }
 
+    public function validateRequest($IdDoc)
+    {
+        $emailUser = Yii::$app->getRequest()->getCookies()->getValue('emailUser');
+
+        $queryuser = "SELECT M_User.IdUser AS IdUser
+                            FROM M_User
+                            WHERE M_User.EmailUser = '$emailUser'";
+        $idUser = Yii::$app->db->createCommand($queryuser)->queryOne();
+        $idUser = $idUser['IdUser'];
+
+        $query = "SELECT COUNT(*) FROM M_RequestAccess WHERE (M_RequestAccess.IdDoc = $IdDoc) AND (M_RequestAccess.IdUser = '$idUser')";
+        $boolCheck = Yii::$app->db->createCommand($query)->queryScalar();
+        if ($boolCheck == 0) {
+            return true;
+        }
+        return false;
+    } 
+
     /**
      * Gets query for [[IdDoc]].
      *

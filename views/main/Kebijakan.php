@@ -10,8 +10,6 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = 'View Document';
-//  echo $querydocumentaccess;
- 
 ?>
 
 <div class="site-index">
@@ -20,15 +18,9 @@ $this->title = 'View Document';
         <hr>
 
         <?php
-//  echo $querydocumentaccess;
-//  echo $iduserresult;
-//  echo $query222;
-
-        // foreach($querydocumentaccess as $query){
         echo GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-//            'showFooter' => true,
             'columns' => [
                 [
                     'class' => 'yii\grid\SerialColumn',
@@ -73,7 +65,7 @@ $this->title = 'View Document';
                         }
 
                         if ($action === 'request') {
-                            $url2 = './?r=revision/show-details&IdDoc=' . $searchModel->IdDoc;
+                            $url2 = './?r=main/request&IdDoc=' . $searchModel->IdDoc;
                             return $url2;
                         }
                     }

@@ -8,32 +8,6 @@ use yii\web\UploadFile;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
-//$cookies = Yii::$app->request->cookies;
-//if (($cookie = $cookies->get('emailUser')) !== null) {
-//    $emailUser = $cookie->value;
-//    $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-//    $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
-//    $namaUserquery = "SELECT M_User.Nama FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-//    $namaUser = Yii::$app->db->createCommand($namaUserquery)->queryScalar();
-//    $query = "SELECT *
-//                                FROM M_Notification
-//                                JOIN M_NotificationStatus ON M_Notification.IdContentNotif = M_NotificationStatus.IdContentNotif
-//                                WHERE M_Notification.IdUser = '$IdUser'";
-//                $notifications = Yii::$app->db->createCommand($query);
-//                $result = $notifications->query();
-//            }else{
-//
-//            }
-//
-//            $model = new UserSignature();
-//            if ($model->load(Yii::$app->request->post())){
-//                $model->signature = UploadedFile::getInstance($model, 'signature');
-//                $signature_path = $model->IdUser.rand(1,4000).'.'.$model->signature->getExtension;
-//            }
-//    $notifications = Yii::$app->db->createCommand($query);
-//    $result = $notifications->query();
-
 ?>
 
 <header class="main-header">
@@ -94,10 +68,7 @@ use yii\web\UploadFile;
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-                                    
-<!--                                        --><?php //foreach ($result as $notif) { ?>
-<!--                                            <i class="fa fa-users text-aqua"></i> --><?//= $notif['ContentNotif'] ?>
-<!--                                        --><?php //} ?>
+
                                     </a>
                                 </li>
                             </ul>

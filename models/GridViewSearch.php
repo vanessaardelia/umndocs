@@ -14,7 +14,7 @@ class GridViewSearch extends Document{
     public function rules()
     {
         return [
-          [['namaDoc', 'JenisDoc', 'CreatedBy'], 'string']
+          [['idUser','namaDoc', 'JenisDoc', 'CreatedBy'], 'string']
         ];
     }
 
@@ -27,14 +27,23 @@ class GridViewSearch extends Document{
      */
 
     public function search($params){
-        $query = Document::find() ->select(['JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc'])
-            ->from('M_Document')
-            ->join('join', 'M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc');
+        $emailUser = Yii::$app->getRequest()->getCookies()->getValue('emailUser');
+
+        $queryuser = "SELECT M_User.IdUser AS IdUser
+                            FROM M_User
+                            WHERE M_User.EmailUser = '$emailUser'";
+        $idUser = Yii::$app->db->createCommand($queryuser)->queryOne();
+        $idUser = $idUser['IdUser'];
+
+        $query = Document::find() -> select(['M_Document.IdDoc AS IdDoc', 'M_AccessUser.IdUser AS idUser',                                      'JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc', '                                 (CASE WHEN M_AccessUser.IdUser = "' . $idUser . '" THEN 1 ELSE 0 END) AS sama'])
+                                    ->from('M_Document')
+                                    ->leftjoin('M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc')
+                                    ->leftjoin('M_AccessUser', 'M_AccessUser.IdDoc = M_Document.IdDoc');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 10,   
             ],
         ]);
 
@@ -51,3 +60,4 @@ class GridViewSearch extends Document{
         return $dataProvider;
     }
 }
+

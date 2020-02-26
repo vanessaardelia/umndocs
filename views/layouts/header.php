@@ -38,14 +38,6 @@ if (($cookie = $cookies->get('emailUser')) !== null) {
                 
             }
 
-            $model = new UserSignature();
-            if ($model->load(Yii::$app->request->post())){
-                $model->signature = UploadedFile::getInstance($model, 'signature');
-                $signature_path = $model->IdUser.rand(1,4000).'.'.$model->signature->getExtension;
-            }
-    $notifications = Yii::$app->db->createCommand($query);
-    $result = $notifications->query();
-
 ?>
 
 <header class="main-header">
@@ -107,9 +99,6 @@ if (($cookie = $cookies->get('emailUser')) !== null) {
                                 <li>
                                     <a href="#">
                                     
-                                        <?php foreach ($result as $notif) { ?>
-                                            <i class="fa fa-users text-aqua"></i> <?= $notif['ContentNotif'] ?>
-                                        <?php } ?>
                                     </a>
                                 </li>
                             </ul>

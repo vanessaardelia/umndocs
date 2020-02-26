@@ -15,7 +15,7 @@ use Yii;
  * @property string|null $Departemen
  * @property string $Nama
  *
- * @property MAccessuser[] $mAccessusers
+ * @property Accessuser[] $mAccessusers
  * @property MDocument[] $idDocs
  * @property MGivennotes[] $mGivennotes
  * @property MGroupuser[] $mGroupusers
@@ -88,9 +88,9 @@ class User extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMAccessusers()
+    public function getAccessusers()
     {
-        return $this->hasMany(MAccessuser::className(), ['IdUser' => 'IdUser']);
+        return $this->hasMany(Accessuser::className(), ['IdUser' => 'IdUser']);
     }
 
     /**
@@ -100,7 +100,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getIdDocs()
     {
-        return $this->hasMany(MDocument::className(), ['IdDoc' => 'IdDoc'])->viaTable('m_accessuser', ['IdUser' => 'IdUser']);
+        return $this->hasMany(Document::className(), ['IdDoc' => 'IdDoc'])->viaTable('m_accessuser', ['IdUser' => 'IdUser']);
     }
 
     /**

@@ -33,8 +33,8 @@ class AccessUser extends \yii\db\ActiveRecord
             [['IdDoc'], 'integer'],
             [['IdUser'], 'string', 'max' => 11],
             [['IdDoc', 'IdUser'], 'unique', 'targetAttribute' => ['IdDoc', 'IdUser']],
-            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => MDocument::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
-            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => MUser::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
+            [['IdDoc'], 'exist', 'skipOnError' => true, 'targetClass' => Document::className(), 'targetAttribute' => ['IdDoc' => 'IdDoc']],
+            [['IdUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['IdUser' => 'IdUser']],
         ];
     }
 
@@ -66,6 +66,6 @@ class AccessUser extends \yii\db\ActiveRecord
      */
     public function getIdUser()
     {
-        return $this->hasOne(MUser::className(), ['IdUser' => 'IdUser']);
+        return $this->hasOne(User::className(), ['IdUser' => 'IdUser']);
     }
 }

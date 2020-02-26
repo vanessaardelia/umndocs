@@ -37,6 +37,8 @@ class Document extends \yii\db\ActiveRecord
 {
     public $namaDoc;
     public $file;
+    public $idUser;
+    public $sama;
 
     /**
      * {@inheritdoc}
@@ -52,7 +54,7 @@ class Document extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['IdDoc', 'Parentid', 'DocumentStatus', 'JenisDoc', 'CreatedBy', 'Owner', 'NoDoc'], 'required'],
+            [['IdDoc', 'idUser', 'Parentid', 'DocumentStatus', 'JenisDoc', 'CreatedBy', 'Owner', 'NoDoc'], 'required'],
             [['IdDoc', 'Parentid', 'DocumentStatus'], 'integer'],
             [['JenisDoc', 'namaDoc'], 'string', 'max' => 30],
             [['CreatedBy', 'Owner'], 'string', 'max' => 11],
@@ -86,7 +88,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMAccesscommentboxes()
     {
-        return $this->hasMany(MAccesscommentbox::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Accesscommentbox::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -96,7 +98,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMAccessgroups()
     {
-        return $this->hasMany(MAccessgroup::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Accessgroup::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -106,7 +108,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getIdGroups()
     {
-        return $this->hasMany(MGroup::className(), ['IdGroup' => 'IdGroup'])->viaTable('m_accessgroup', ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Group::className(), ['IdGroup' => 'IdGroup'])->viaTable('m_accessgroup', ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -116,7 +118,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMAccessusers()
     {
-        return $this->hasMany(MAccessuser::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Accessuser::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -126,7 +128,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getIdUsers()
     {
-        return $this->hasMany(MUser::className(), ['IdUser' => 'IdUser'])->viaTable('m_accessuser', ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(User::className(), ['IdUser' => 'IdUser'])->viaTable('m_accessuser', ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -156,7 +158,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMDownloads()
     {
-        return $this->hasMany(MDownload::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Download::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -166,7 +168,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMGivennotes()
     {
-        return $this->hasMany(MGivennotes::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Givennotes::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -176,7 +178,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMMengetahuis()
     {
-        return $this->hasMany(MMengetahui::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Mengetahui::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -186,7 +188,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getIdUsers0()
     {
-        return $this->hasMany(MUser::className(), ['IdUser' => 'IdUser'])->viaTable('m_mengetahui', ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(User::className(), ['IdUser' => 'IdUser'])->viaTable('m_mengetahui', ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -196,7 +198,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMMenyetujuis()
     {
-        return $this->hasMany(MMenyetujui::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Menyetujui::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -206,7 +208,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getIdUsers1()
     {
-        return $this->hasMany(MUser::className(), ['IdUser' => 'IdUser'])->viaTable('m_menyetujui', ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(User::className(), ['IdUser' => 'IdUser'])->viaTable('m_menyetujui', ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -216,7 +218,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMRequestaccesses()
     {
-        return $this->hasMany(MRequestaccess::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Requestaccess::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -226,7 +228,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getIdUsers2()
     {
-        return $this->hasMany(MUser::className(), ['IdUser' => 'IdUser'])->viaTable('m_requestaccess', ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(User::className(), ['IdUser' => 'IdUser'])->viaTable('m_requestaccess', ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -236,7 +238,7 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMRevisis()
     {
-        return $this->hasMany(MRevisi::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Revisi::className(), ['IdDoc' => 'IdDoc']);
     }
 
     /**
@@ -246,6 +248,6 @@ class Document extends \yii\db\ActiveRecord
      */
     public function getMTags()
     {
-        return $this->hasMany(MTags::className(), ['IdDoc' => 'IdDoc']);
+        return $this->hasMany(Tags::className(), ['IdDoc' => 'IdDoc']);
     }
 }

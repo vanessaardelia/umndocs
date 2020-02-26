@@ -136,8 +136,8 @@ class DocumentController extends \yii\web\Controller
         $query = "SELECT M_User.IdUser
                         FROM M_User
                         WHERE M_User.EmailUser = '$emailUser'";
-            $iduserr = Yii::$app->db->createCommand($query);
-            $iduserresult = $iduserr->queryScalar();
+        $iduserr = Yii::$app->db->createCommand($query);
+        $iduserresult = $iduserr->queryScalar();
 
         $queryIdNote = "SELECT MAX(IdNotes) FROM M_Givennotes";
         $IdNote = Yii::$app->db->createCommand($queryIdNote)->queryScalar();

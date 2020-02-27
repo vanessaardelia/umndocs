@@ -8,36 +8,6 @@ use yii\web\UploadFile;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
-// $dataProvider = new ActiveDataProvider([
-//     //    'query' => $query,
-//     //        'query' => $documents->asArray(),
-//         'query' => Document::find() ->select(['JenisDoc', 'DocumentStatus', 'CreatedBy', 'M_Revisi.NamaDoc AS namaDoc'])
-//                                     ->from('M_Document')
-//                                     ->join('join', 'M_Revisi', 'M_Revisi.IdDoc = M_Document.IdDoc'),
-
-//         'pagination' => [
-//             'pageSize' => 10,
-//         ]
-//     ])
-
-$cookies = Yii::$app->request->cookies;
-if (($cookie = $cookies->get('emailUser')) !== null) {
-    $emailUser = $cookie->value;
-    $IdUserquery = "SELECT M_User.IdUser FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-    $IdUser = Yii::$app->db->createCommand($IdUserquery)->queryScalar();
-    $namaUserquery = "SELECT M_User.Nama FROM M_User WHERE M_User.EmailUser = '$emailUser'";
-    $namaUser = Yii::$app->db->createCommand($namaUserquery)->queryScalar();
-    $query = "SELECT *
-                                FROM M_Notification
-                                JOIN M_NotificationStatus ON M_Notification.IdContentNotif = M_NotificationStatus.IdContentNotif
-                                WHERE M_Notification.IdUser = '$IdUser'";
-                $notifications = Yii::$app->db->createCommand($query);
-                $result = $notifications->query();
-            }else{
-                
-            }
-
 ?>
 
 <header class="main-header">
@@ -98,7 +68,7 @@ if (($cookie = $cookies->get('emailUser')) !== null) {
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-                                    
+
                                     </a>
                                 </li>
                             </ul>

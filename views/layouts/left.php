@@ -61,8 +61,8 @@
                         ],
                     ],
                     ['label' => 'Update Hierarchy', 'icon' => 'tree', 'url' => ['/update-hierarchy']],
-                    ['label' => 'Grant Access', 'icon' => 'group', 'url' => ['/grant-access']],
-                    ['label' => 'Access Control', 'icon' => 'cog', 'url' => ['/access-control']],
+                    ['label' => 'Grant Access', 'icon' => 'group', 'url' => ['/access-control/index']],
+                    ['label' => 'Access Control', 'icon' => 'cog', 'url' => ['']],
                     // ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                 ],
             ]

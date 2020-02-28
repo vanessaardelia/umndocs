@@ -36,17 +36,17 @@ class MainController extends \yii\web\Controller
    
    public function actionKebijakan()
    {
-    $query = "SELECT M_Document.IdDoc as IdDoc, M_Revisi.NamaDoc as namaDoc
-                FROM M_Document
-                JOIN M_Revisi ON M_Document.IdDoc = M_Revisi.IdDoc";
-    $documents = Yii::$app->db->createCommand($query);
-    $result = $documents->query();
+    // $query = "SELECT M_Document.IdDoc as IdDoc, M_Revisi.NamaDoc as namaDoc
+    //             FROM M_Document
+    //             JOIN M_Revisi ON M_Document.IdDoc = M_Revisi.IdDoc";
+    // $documents = Yii::$app->db->createCommand($query);
+    // $result = $documents->query();
 
     $searchModel = new GridViewSearch();
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
        return $this->render('Kebijakan', [
-        'documents' => $result,
+        // 'documents' => $result,
         'searchModel' => $searchModel,
         'dataProvider' => $dataProvider,
     ]);

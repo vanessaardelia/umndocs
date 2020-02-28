@@ -39,6 +39,13 @@ class Document extends \yii\db\ActiveRecord
     public $file;
     public $idUser;
     public $sama;
+    public $statusdraf;
+    public $statussubmitted;
+    public $statuswaitingfortag;
+    public $statusuploadcover;
+    public $statusapproved;
+    public $statusrevised;
+    // public $status;
 
     /**
      * {@inheritdoc}

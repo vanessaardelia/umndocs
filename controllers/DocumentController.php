@@ -5,6 +5,7 @@ use Yii;
 use app\models\Document;
 use app\models\Revisi;
 use app\models\givennotes;
+use app\models\GridViewAllDocument;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -117,16 +118,17 @@ class DocumentController extends \yii\web\Controller
 
     public function actionDraf()
     {
-        $query = "SELECT *
-                        FROM M_Revisi
-                        JOIN M_Document ON M_Revisi.IdDoc = M_Document.IdDoc
-                        WHERE M_Document.DocumentStatus = '1'";
-        $documents = Yii::$app->db->createCommand($query);
-        $result = $documents->query();
-        return $this->render('draf', ['documents' => $result]);
+        //GRIDVIEWALLDOCUMENT
+
+        $searchModel = new GridViewAllDocument();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('draf', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
-    //udah bs masuk database tp idnotes blm di increment jd msh error, tp udh msk database
     public function actionGivennotes($IdDoc){
         $model = new Givennotes();
         if (($cookie = Yii::$app->request->cookies->get('emailUser')) !== null) {
@@ -162,7 +164,37 @@ class DocumentController extends \yii\web\Controller
         $result = $notesresult->query();
 
         return $this->render('givennotes', ['notes' => $model, 'emailUser' => $emailUser, 'givennotes' => $result]);
+    }
 
-        // return $this->render('givennotes', ['notes' => $model, 'emailUser' => $emailUser]);
+    public function actionCancelsubmitted($IdDoc)
+    {
+        $query = "UPDATE M_Document
+                    SET DocumentStatus = 6
+                    WHERE M_Document.IdDoc = $IdDoc";
+        $querycancel = Yii::$app->db->createCommand($query)->query();
+
+        $searchModel = new GridViewAllDocument();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('draf', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUploadcover($IdDoc)
+    {
+        $model = new UserSignature();
+    	if($model->load(Yii::$app->request->post())){
+    		$idUser = Yii::$app->getRequest()->getCookies()->getValue('idUser');
+    		$model->file = UploadedFile::getInstance($model, 'file');
+    		$model->file->saveAs('Resources/Signature/'.$idUser.'.png');
+    		$model->file->name = $idUser.'.png';
+    		$query = "INSERT INTO M_User_Signature (IdUser, Signature) VALUES ('$idUser', '$model->file')";
+    		Yii::$app->db->createCommand($query)->execute();
+    		return $this->render('index');
+    	}
+    	return $this->render('uploadsignature', ['model' => $model]);
+        return $this->render('uploadcover');
     }
 }

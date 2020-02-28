@@ -18,6 +18,7 @@ use Yii;
  */
 class Revisi extends \yii\db\ActiveRecord
 {
+    public $namaDoc;
     /**
      * {@inheritdoc}
      */

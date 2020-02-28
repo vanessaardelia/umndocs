@@ -15,6 +15,7 @@ use Yii;
  */
 class AccessUser extends \yii\db\ActiveRecord
 {
+    public $EmailUser;
     /**
      * {@inheritdoc}
      */
